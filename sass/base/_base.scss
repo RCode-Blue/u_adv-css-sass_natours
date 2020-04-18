@@ -9,9 +9,49 @@
 
 html {
   // defines 1rem
-  font-size: 62.5%;
+  // ------------
+  // we want:            1rem = 10px
+  // browser default is: 1rem = 16px
+  font-size: 62.5%;  // 10/16 = 0.625 (ie. 10px = 62.5% of 16px)
+
+  // #region
+  // @media (max-width: 600px) {
+  //   font-size: 50%;
+  // }
+
+  // @include respond-phone {
+  //   font-size: 25%;
+  // }
+  // #endregion
+
+  @include respond(tab-land) {
+    font-size: 56.3%;  // 1rem = 9px; 9/16 = 0.5625
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%;  // 1rem = 8px; 8/16 = 0.50
+  }
+
+  // @include respond(phone) {
+  //   font-size: 43.8%  // 1rem = 7px; 7/16 = 0.4375;
+  // }
+
+  @include respond(big-desktop) {
+    font-size: 75%;  // 1rem = 12px; 12/26 = 0.75
+  }
 }
 
 body {
   box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
+
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
 }
